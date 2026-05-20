@@ -320,6 +320,105 @@ button.secondary-action {
   color: #2b6653;
 }
 
+.custom-profile-builder {
+  display: grid;
+  gap: .9rem;
+  margin-top: 1rem;
+  border: 1px solid rgba(7, 22, 17, .1);
+  border-radius: 1.5rem;
+  background: rgba(233, 248, 242, .62);
+  padding: 1rem;
+}
+
+.custom-profile-topline {
+  display: grid;
+  gap: .8rem;
+}
+
+.custom-profile-topline strong,
+.custom-profile-topline span {
+  display: block;
+}
+
+.custom-profile-topline strong {
+  font-size: 1.08rem;
+}
+
+.custom-profile-topline span,
+.empty-note {
+  color: #5f6f67;
+  font-size: .92rem;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.button-row.compact {
+  justify-content: flex-start;
+  margin-top: 0;
+}
+
+.text-action {
+  border: 0;
+  background: transparent;
+  color: #8a4e1f;
+  cursor: pointer;
+  font-weight: 950;
+}
+
+.text-action:disabled,
+.primary-action:disabled,
+.secondary-action:disabled {
+  cursor: not-allowed;
+  opacity: .48;
+}
+
+.custom-profile-table {
+  display: grid;
+  gap: .35rem;
+  overflow-x: auto;
+}
+
+.custom-profile-row {
+  min-width: 34rem;
+  display: grid;
+  grid-template-columns: minmax(9rem, 1fr) 8rem 5rem 7rem 5rem;
+  gap: .45rem;
+  align-items: center;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, .78);
+  padding: .55rem;
+}
+
+.custom-profile-row.header {
+  color: #2b6653;
+  background: transparent;
+  font-size: .72rem;
+  font-weight: 950;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.custom-profile-row > span {
+  min-width: 0;
+  overflow: hidden;
+  font-weight: 900;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.custom-profile-row select {
+  width: 100%;
+  border: 1px solid rgba(7, 22, 17, .13);
+  border-radius: .8rem;
+  background: #fff;
+  padding: .45rem .55rem;
+}
+
+.custom-profile-row label {
+  display: grid;
+  place-items: center;
+}
+
 .drop-zone {
   display: grid;
   place-items: center;

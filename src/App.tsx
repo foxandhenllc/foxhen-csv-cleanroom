@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { CustomProfileBuilder } from "./components/CustomProfileBuilder";
 import { DropPastePanel } from "./components/DropPastePanel";
 import { ExportPanel } from "./components/ExportPanel";
 import { IssueTable } from "./components/IssueTable";
@@ -7,16 +8,20 @@ import { ProfilePicker } from "./components/ProfilePicker";
 import { SummaryCards } from "./components/SummaryCards";
 import { profiles } from "./data/profiles";
 import { publicSafeNotes, sampleCsv, useCases } from "./data/sampleCsv";
+import { loadCustomProfile, saveCustomProfile } from "./lib/customProfile";
 import { cleanCsvText } from "./lib/csvCleanroom.js";
+import type { CleanroomProfile } from "./lib/csvCleanroom.js";
 import "./styles.css";
 
 function App() {
   const [selectedProfileId, setSelectedProfileId] = useState("email-list");
+  const [customProfile, setCustomProfile] = useState<CleanroomProfile | null>(() => loadCustomProfile());
   const [csvText, setCsvText] = useState(sampleCsv);
   const [fileLabel, setFileLabel] = useState("Fictional sample CSV loaded");
 
-  const result = useMemo(() => (csvText.trim() ? cleanCsvText(csvText, selectedProfileId) : null), [csvText, selectedProfileId]);
-  const selectedProfile = profiles.find((profile) => profile.id === selectedProfileId) ?? profiles[0];
+  const availableProfiles = useMemo(() => (customProfile ? [...profiles, customProfile] : profiles), [customProfile]);
+  const selectedProfile = availableProfiles.find((profile) => profile.id === selectedProfileId) ?? availableProfiles[0];
+  const result = useMemo(() => (csvText.trim() ? cleanCsvText(csvText, selectedProfile) : null), [csvText, selectedProfile]);
 
   function handleFileText(fileName: string, text: string) {
     setFileLabel(fileName);
@@ -26,6 +31,14 @@ function App() {
   function reloadSample() {
     setFileLabel("Fictional sample CSV loaded");
     setCsvText(sampleCsv);
+  }
+
+  function handleCustomProfileChange(profile: CleanroomProfile | null) {
+    setCustomProfile(profile);
+    saveCustomProfile(profile);
+    if (!profile && selectedProfileId === "custom-local") {
+      setSelectedProfileId("email-list");
+    }
   }
 
   return (
@@ -75,7 +88,13 @@ function App() {
           <div className="panel profile-panel">
             <div className="section-kicker">Profiles</div>
             <h2>Pick the validation rules that match the handoff.</h2>
-            <ProfilePicker profiles={profiles} selectedProfileId={selectedProfileId} onSelectProfile={setSelectedProfileId} />
+            <ProfilePicker profiles={availableProfiles} selectedProfileId={selectedProfileId} onSelectProfile={setSelectedProfileId} />
+            <CustomProfileBuilder
+              csvText={csvText}
+              customProfile={customProfile}
+              onCustomProfileChange={handleCustomProfileChange}
+              onSelectCustomProfile={() => setSelectedProfileId("custom-local")}
+            />
           </div>
 
           <DropPastePanel
