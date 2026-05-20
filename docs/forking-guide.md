@@ -5,25 +5,26 @@ Use this guide to adapt the demo without introducing private data or hidden depe
 ## Public-Safe Sample Scenario
 
 - Service line: CSV and spreadsheet cleanup
-- Demo promise: Profile fictional CSV rows, dedupe records, quarantine issues, apply rules, and prepare export files.
-- Fictional sample object: data cleaning bench
-- Runtime: static React/Vite, no backend, no auth, no external API calls
+- Demo promise: clean fictional CSV rows, validate common field types, detect duplicates, and export handoff files.
+- Runtime: static React/Vite browser app plus local Node CLI
+- Data posture: no backend, no auth, no upload endpoint, no external API calls
 
 ## Replace First
 
-1. Edit `src/data.ts` titles, owners, notes, dates, theme colors, repository URL, and live demo URL.
-2. Keep owners generic such as `Fox & Hen`, `Buyer`, `QA`, or fictional roles.
-3. Keep notes written as sanitized examples; do not paste customer logs, emails, credentials, invoices, or screenshots.
+1. Edit `src/data/sampleCsv.ts` for the browser fixture and visible use cases.
+2. Edit or add profiles in `src/lib/csvCleanroom.js`.
+3. Keep every fixture row synthetic; do not paste customer exports, emails, credentials, invoices, logs, or screenshots.
 4. Refresh `docs/demo-screenshot.png` after visual changes.
+5. Rerun `npm run smoke`, `npm run typecheck`, and `npm run build`.
 
 ## Buyer Credibility Checklist
 
-- The hero states the service outcome in one sentence.
-- The board can be searched, sorted, edited, advanced, simulated, and exported.
-- QA gates explain what makes the package handoff-ready.
-- The generated report is readable by a non-technical buyer.
-- `npm run build --silent` passes before deploy.
+- The hero states that processing is local and public-safe.
+- The selected profile catches missing required columns and invalid values.
+- The issue table explains duplicate, whitespace, casing, email, URL, date, and phone findings.
+- Export buttons produce cleaned CSV, JSON issue report, and Markdown handoff files.
+- CLI usage in the README works with the committed fixture.
 
 ## Starter Adaptation Brief
 
-Fork CSV Cleanroom as a public-safe client demo for csv and spreadsheet cleanup. Keep all records fictional, update `src/data.ts`, preserve the readiness board and export flow, and publish only after the build passes.
+Fork CSV Cleanroom as a public-safe client demo for CSV and spreadsheet cleanup. Keep all records fictional, tune the profile rules in `src/lib/csvCleanroom.js`, update `src/data/sampleCsv.ts`, and publish only after smoke, typecheck, and build pass.

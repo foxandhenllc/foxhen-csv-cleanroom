@@ -1,50 +1,76 @@
 # CSV Cleanroom
 
-Public Fox & Hen working sample for **CSV and spreadsheet cleanup**.
+Public-safe CSV cleanup utility from **Fox & Hen**. Paste or drag in a CSV, choose a profile, validate messy rows, preview normalized data, and export a cleaned CSV plus audit-friendly handoff files.
 
-![Demo screenshot](docs/demo-screenshot.png)
+![CSV Cleanroom demo screenshot](docs/demo-screenshot.png)
 
 ## Live Demo
 
 - Demo: [https://foxhen-csv-cleanroom.vercel.app](https://foxhen-csv-cleanroom.vercel.app)
 - Repository: [https://github.com/foxandhenllc/foxhen-csv-cleanroom](https://github.com/foxandhenllc/foxhen-csv-cleanroom)
+- License: [MIT](LICENSE)
 
-## Fully Working Behaviors
+## What It Does
 
-- Search, filter, and sort the sample work board.
-- Add a new sample item and edit owner, notes, priority, value, effort, and friction.
-- Advance work status and watch readiness metrics update.
-- Run the 24-hour sprint simulation to reprioritize high-value items.
-- Toggle QA gates, generate a handoff report, and download the current board as JSON.
+- Accepts CSV by drag/drop, file picker, or paste.
+- Supports cleaning profiles for email lists, contact imports, and content inventories.
+- Parses rows locally and validates email, URL, date, and US phone fields.
+- Detects duplicate keys, missing required columns, missing required values, whitespace, and casing issues.
+- Shows a sortable-style issue table and cleaned-data preview in the browser.
+- Exports cleaned CSV, JSON issue report, and Markdown handoff.
+- Includes a local Node CLI for repeatable fixture/client handoffs.
 
-## Service Mapping
+## Screenshots
 
-This demo packages a lightweight csv and spreadsheet cleanup workflow around:
+The screenshot above shows the browser app with fictional rows, issue counts, validation findings, and export controls. Refresh `docs/demo-screenshot.png` after meaningful UI changes.
 
-- Ranked board
-- Editable item inspector
-- Readiness checklist
-- Exportable handoff report
+## Use Cases
 
-The app is intentionally static so prospects can inspect the flow, fork it, and replace only the fictional sample records in `src/data.ts`.
+- Newsletter or email-list import cleanup.
+- CRM contact dedupe before migration.
+- Content inventory URL/date normalization.
+- Public-safe proof of a spreadsheet QA workflow.
 
-## Fork This Demo
+## CLI Usage
 
-1. Replace the fictional work items in `src/data.ts` with your own public-safe sample scenario.
-2. Update colors, service copy, repository URL, and live demo URL in the same file.
-3. Keep screenshots, exported JSON, and README examples free of credentials, real customer data, and personal contacts.
-4. Run `npm run build --silent` before publishing.
+```bash
+node bin/csv-cleanroom.mjs fixtures/dirty-email-list.csv \
+  --profile email-list \
+  --out cleaned.csv \
+  --report report.json \
+  --markdown handoff.md
+```
 
-See `docs/forking-guide.md` for a checklist and starter client brief.
+Available profiles:
 
-## Local Run
+- `email-list`
+- `contact-import`
+- `content-inventory`
+
+## Local Development
 
 ```bash
 npm install
 npm run dev
+npm run smoke
+npm run typecheck
 npm run build
 ```
 
+`npm run smoke` runs the CLI against `fixtures/dirty-email-list.csv` and verifies cleaned CSV plus JSON report output.
+
+A copy-ready CI workflow lives at `docs/github-actions/build.yml.example`; move it to `.github/workflows/build.yml` after GitHub auth has the `workflow` scope.
+
+## Client Customization
+
+- Update browser fixture/use-case copy in `src/data/sampleCsv.ts`.
+- Add or change profiles in `src/lib/csvCleanroom.js` so UI and CLI stay in sync.
+- Adjust browser downloads in `src/exporters/downloads.ts`.
+- Use `docs/client-brief-template.md` before adapting the tool for a buyer.
+- Follow `docs/public-safe-data.md` before committing screenshots, fixtures, or reports.
+
+See `docs/customization-guide.md` for profile and export customization details.
+
 ## Public-Safe Scope
 
-This is a static React/Vite demo with fictional sample data. It includes no production data, credentials, real contacts, copied customer work, backend, auth, or external service calls.
+CSV Cleanroom is a static React + TypeScript + Vite app with a local Node CLI. It has no backend, auth, tracking, upload endpoint, secrets, or real data. All committed fixtures and screenshots must remain fictional.
