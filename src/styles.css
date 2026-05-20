@@ -541,10 +541,25 @@ td small {
   .site-header {
     position: relative;
     top: auto;
+    width: calc(100% - 1rem);
     transform: none;
     margin-top: .8rem;
     border-radius: 1.5rem;
+    flex-direction: column;
     align-items: flex-start;
+  }
+
+  nav {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  nav a {
+    padding: .65rem .8rem;
+  }
+
+  main {
+    width: calc(100% - 1rem);
   }
 
   .hero {
