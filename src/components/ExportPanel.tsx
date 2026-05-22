@@ -7,15 +7,25 @@ type ExportPanelProps = {
 };
 
 export function ExportPanel({ result }: ExportPanelProps) {
-  const [copied, setCopied] = useState(false);
+  const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "manual">("idle");
   const markdown = useMemo(() => (result ? buildMarkdownHandoff(result) : ""), [result]);
   const disabled = !result;
 
   async function copyMarkdown() {
-    if (!markdown || !navigator.clipboard) return;
-    await navigator.clipboard.writeText(markdown);
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1600);
+    if (!markdown) return;
+
+    if (navigator.clipboard) {
+      try {
+        await navigator.clipboard.writeText(markdown);
+        setCopyStatus("copied");
+        window.setTimeout(() => setCopyStatus("idle"), 1600);
+        return;
+      } catch {
+        setCopyStatus("manual");
+      }
+    } else {
+      setCopyStatus("manual");
+    }
   }
 
   return (
@@ -32,8 +42,16 @@ export function ExportPanel({ result }: ExportPanelProps) {
         <button type="button" className="primary-action" disabled={disabled} onClick={() => result && downloadCleanedCsv(result)}>Export cleaned CSV</button>
         <button type="button" className="secondary-action" disabled={disabled} onClick={() => result && downloadIssueReport(result)}>Export JSON report</button>
         <button type="button" className="secondary-action" disabled={disabled} onClick={() => result && downloadMarkdownHandoff(result)}>Export Markdown</button>
-        <button type="button" className="secondary-action" disabled={disabled} onClick={() => void copyMarkdown()}>{copied ? "Copied handoff" : "Copy handoff"}</button>
+        <button type="button" className="secondary-action" disabled={disabled} onClick={() => void copyMarkdown()}>
+          {copyStatus === "copied" ? "Copied handoff" : copyStatus === "manual" ? "Select handoff below" : "Copy handoff"}
+        </button>
       </div>
+
+      {copyStatus === "manual" ? (
+        <p className="copy-fallback" role="status">
+          Clipboard permission is blocked in this browser. Select the Markdown handoff below and copy it manually.
+        </p>
+      ) : null}
 
       <pre className="cli-card">
         <code>node bin/csv-cleanroom.mjs input.csv --profile email-list --out cleaned.csv --report report.json</code>
