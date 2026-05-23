@@ -265,7 +265,7 @@ button.secondary-action {
 
 .results-grid {
   display: grid;
-  grid-template-columns: minmax(360px, .42fr) minmax(0, 1fr);
+  grid-template-columns: 1fr;
   gap: 1rem;
   align-items: start;
   padding: 1rem 0 1.5rem;
@@ -539,6 +539,64 @@ button.secondary-action {
   background: rgba(255, 255, 255, .84);
 }
 
+.issue-panel h2 {
+  font-size: clamp(2.2rem, 3.6vw, 4.1rem);
+}
+
+.issue-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .75rem;
+}
+
+.issue-card {
+  display: grid;
+  gap: .55rem;
+  border: 1px solid rgba(7, 22, 17, .09);
+  border-radius: 1.15rem;
+  background: rgba(255, 255, 255, .82);
+  padding: .9rem;
+}
+
+.issue-card-topline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  align-items: center;
+}
+
+.issue-card-topline > span:not(.severity) {
+  border-radius: 999px;
+  background: #f4fbf7;
+  color: #2b6653;
+  padding: .32rem .5rem;
+  font-size: .72rem;
+  font-weight: 950;
+}
+
+.issue-card strong,
+.issue-card p,
+.issue-card small {
+  overflow-wrap: anywhere;
+}
+
+.issue-card strong {
+  font-size: 1rem;
+}
+
+.issue-card p {
+  margin: 0;
+  color: #29362f;
+  font-size: .94rem;
+  font-weight: 760;
+  line-height: 1.38;
+}
+
+.issue-card small {
+  color: #68766f;
+  font-weight: 850;
+}
+
 th,
 td {
   min-width: 8rem;
@@ -659,6 +717,14 @@ td small {
   .use-case-strip {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .issue-panel h2 {
+    font-size: clamp(2.2rem, 8vw, 4rem);
+  }
+
+  .issue-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 720px) {
@@ -711,5 +777,9 @@ td small {
   .custom-profile-row.header {
     font-size: .58rem;
     letter-spacing: .03em;
+  }
+
+  .issue-list {
+    grid-template-columns: 1fr;
   }
 }

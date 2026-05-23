@@ -6,41 +6,26 @@ type IssueTableProps = {
 
 export function IssueTable({ issues }: IssueTableProps) {
   return (
-    <section className="panel" id="issues">
+    <section className="panel issue-panel" id="issues">
       <div className="section-kicker">Issue table</div>
       <h2>Every validation finding stays audit-friendly.</h2>
-      <div className="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Row</th>
-              <th>Column</th>
-              <th>Severity</th>
-              <th>Type</th>
-              <th>Message</th>
-            </tr>
-          </thead>
-          <tbody>
-            {issues.length === 0 ? (
-              <tr>
-                <td colSpan={5}>No issues detected in the current CSV.</td>
-              </tr>
-            ) : (
-              issues.slice(0, 80).map((issue, issueIndex) => (
-                <tr key={`${issue.rowNumber}-${issue.column}-${issue.type}-${issueIndex}`}>
-                  <td>{issue.rowNumber}</td>
-                  <td>{issue.column || "CSV"}</td>
-                  <td><span className={`severity ${issue.severity}`}>{issue.severity}</span></td>
-                  <td>{issue.type}</td>
-                  <td>
-                    {issue.message}
-                    {issue.suggestion ? <small>Suggested: {issue.suggestion}</small> : null}
-                  </td>
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+      <div className="issue-list" role="list" aria-label="CSV validation findings">
+        {issues.length === 0 ? (
+          <p className="empty-note">No issues detected in the current CSV.</p>
+        ) : (
+          issues.slice(0, 80).map((issue, issueIndex) => (
+            <article className="issue-card" role="listitem" key={`${issue.rowNumber}-${issue.column}-${issue.type}-${issueIndex}`}>
+              <div className="issue-card-topline">
+                <span>Row {issue.rowNumber}</span>
+                <span>{issue.column || "CSV"}</span>
+                <span className={`severity ${issue.severity}`}>{issue.severity}</span>
+              </div>
+              <strong>{issue.type}</strong>
+              <p>{issue.message}</p>
+              {issue.suggestion ? <small>Suggested: {issue.suggestion}</small> : null}
+            </article>
+          ))
+        )}
       </div>
     </section>
   );

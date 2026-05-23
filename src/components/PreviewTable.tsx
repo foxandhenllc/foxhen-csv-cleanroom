@@ -9,7 +9,7 @@ export function PreviewTable({ result }: PreviewTableProps) {
   const headers = result?.headers ?? [];
 
   return (
-    <section className="panel" id="preview">
+    <section className="panel preview-panel" id="preview">
       <div className="section-kicker">Clean preview</div>
       <h2>Export-ready rows with safe normalization applied.</h2>
       <div className="table-wrap">
