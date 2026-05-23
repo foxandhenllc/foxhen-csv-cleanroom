@@ -97,12 +97,12 @@ main {
 }
 
 .hero {
-  min-height: 720px;
+  min-height: clamp(560px, 72vh, 680px);
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(420px, .72fr);
   gap: clamp(2rem, 5vw, 5rem);
   align-items: center;
-  padding: 8rem 0 4rem;
+  padding: 7rem 0 3rem;
 }
 
 .service-line,
@@ -255,22 +255,29 @@ button.secondary-action {
   letter-spacing: -.07em;
 }
 
-.workflow-grid,
-.results-grid {
+.workflow-grid {
   display: grid;
-  grid-template-columns: minmax(320px, .48fr) minmax(0, 1fr);
+  grid-template-columns: 1fr;
   gap: 1rem;
   align-items: start;
-  padding: 2rem 0;
+  padding: 1rem 0 1.5rem;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: minmax(360px, .42fr) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+  padding: 1rem 0 1.5rem;
 }
 
 .profile-panel {
-  position: sticky;
-  top: 7rem;
+  position: static;
 }
 
 .profile-grid {
   display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: .8rem;
 }
 
@@ -335,7 +342,9 @@ button.secondary-action {
 
 .custom-profile-topline {
   display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: .8rem;
+  align-items: end;
 }
 
 .custom-profile-topline strong,
@@ -378,13 +387,12 @@ button.secondary-action {
 .custom-profile-table {
   display: grid;
   gap: .35rem;
-  overflow-x: auto;
+  overflow: visible;
 }
 
 .custom-profile-row {
-  min-width: 34rem;
   display: grid;
-  grid-template-columns: minmax(9rem, 1fr) 8rem 5rem 7rem 5rem;
+  grid-template-columns: minmax(12rem, 1fr) minmax(8rem, .72fr) repeat(3, minmax(6rem, .34fr));
   gap: .45rem;
   align-items: center;
   border-radius: 1rem;
@@ -397,7 +405,7 @@ button.secondary-action {
   background: transparent;
   font-size: .72rem;
   font-weight: 950;
-  letter-spacing: .1em;
+  letter-spacing: .07em;
   text-transform: uppercase;
 }
 
@@ -411,10 +419,11 @@ button.secondary-action {
 
 .custom-profile-row select {
   width: 100%;
+  min-width: 0;
   border: 1px solid rgba(7, 22, 17, .13);
   border-radius: .8rem;
   background: #fff;
-  padding: .45rem .55rem;
+  padding: .45rem .45rem;
 }
 
 .custom-profile-row label {
@@ -425,7 +434,7 @@ button.secondary-action {
 .drop-zone {
   display: grid;
   place-items: center;
-  min-height: 10rem;
+  min-height: 8.5rem;
   margin: 1rem 0;
   border: 2px dashed rgba(43, 102, 83, .42);
   border-radius: 1.6rem;
@@ -465,7 +474,7 @@ button.secondary-action {
 .csv-input,
 .handoff-preview {
   width: 100%;
-  min-height: 18rem;
+  min-height: 15rem;
   border: 1px solid rgba(7, 22, 17, .13);
   border-radius: 1.2rem;
   background: rgba(255, 255, 255, .88);
@@ -491,7 +500,7 @@ button.secondary-action {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: .8rem;
-  padding: 1rem 0 2rem;
+  padding: .75rem 0 1.5rem;
 }
 
 .use-case-strip article {
@@ -679,15 +688,28 @@ td small {
 
   .hero {
     min-height: auto;
-    padding-top: 3rem;
+    padding: 2.5rem 0 2rem;
   }
 
   .summary-grid,
-  .use-case-strip {
+  .use-case-strip,
+  .profile-grid,
+  .custom-profile-topline {
     grid-template-columns: 1fr;
   }
 
   h1 {
     font-size: clamp(2.7rem, 16vw, 4.5rem);
+  }
+
+  .custom-profile-row {
+    grid-template-columns: minmax(5.4rem, 1fr) minmax(5.3rem, .8fr) repeat(3, 2.15rem);
+    gap: .35rem;
+    padding: .45rem;
+  }
+
+  .custom-profile-row.header {
+    font-size: .58rem;
+    letter-spacing: .03em;
   }
 }
