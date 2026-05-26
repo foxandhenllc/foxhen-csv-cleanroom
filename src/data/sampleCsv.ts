@@ -6,14 +6,14 @@ export const sampleCsv = `name,email,website,signup_date,phone,company
 "Bad Link","bad-email","not a url","32/14/2026","12345","Bad Data Co"`;
 
 export const useCases = [
-  "Newsletter list cleanup before import",
-  "CRM contact dedupe handoff",
-  "Content URL inventory review",
-  "Spreadsheet QA package for a client",
+  "Email list import prep",
+  "CRM dedupe review",
+  "URL inventory cleanup",
+  "Client spreadsheet QA",
 ];
 
 export const publicSafeNotes = [
-  "Runs locally in the browser or Node CLI",
-  "Uses fictional fixture data only",
+  "Browser-only parsing",
+  "Local Node CLI included",
   "No backend, auth, tracking, secrets, or uploads",
 ];

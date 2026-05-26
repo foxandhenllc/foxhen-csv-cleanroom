@@ -1,6 +1,6 @@
 # CSV Cleanroom
 
-Public-safe CSV cleanup utility from **Fox & Hen**. Paste or drag in a CSV, choose a profile, validate messy rows, preview normalized data, and export a cleaned CSV plus audit-friendly handoff files.
+Local CSV cleanup utility from **Fox & Hen**. Paste or drag in a CSV, choose a profile, review issues, and export cleaned rows plus an issue report.
 
 ![CSV Cleanroom demo screenshot](docs/demo-screenshot.png)
 

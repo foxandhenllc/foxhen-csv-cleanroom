@@ -62,18 +62,14 @@ function App() {
       <main>
         <section className="hero">
           <div>
-            <p className="service-line">Public-safe CSV cleanup utility</p>
-            <h1>Clean messy CSVs without uploading private data.</h1>
+            <p className="service-line">Local CSV cleanup</p>
+            <h1>Clean and validate CSVs in your browser.</h1>
             <p className="lede">
-              Paste or drop a CSV, choose a profile, validate email/url/date/phone fields, detect duplicate records,
-              preview normalized rows, and export a client-ready cleanup package.
+              Paste or drop a CSV, pick a validation profile, review issues, and export cleaned rows. Nothing uploads.
             </p>
             <div className="hero-actions">
-              <a className="primary-action" href="#intake">Start cleaning</a>
-              <a className="secondary-action" href="#export">View exports</a>
-            </div>
-            <div className="credibility-strip" aria-label="Public demo safeguards">
-              {publicSafeNotes.map((note) => <span key={note}>{note}</span>)}
+              <a className="primary-action" href="#intake">Clean a CSV</a>
+              <a className="secondary-action" href="#issues">Review issues</a>
             </div>
           </div>
           <aside className="hero-console">
@@ -109,7 +105,7 @@ function App() {
         <section className="use-case-strip" aria-label="CSV Cleanroom use cases">
           {useCases.map((useCase) => (
             <article key={useCase}>
-              <span>Use case</span>
+              <span>Good for</span>
               <strong>{useCase}</strong>
             </article>
           ))}
@@ -124,14 +120,11 @@ function App() {
 
         <section className="panel public-safe-panel">
           <div>
-            <div className="section-kicker">Public-safe by design</div>
-            <h2>No backend, no secrets, no real data required.</h2>
+            <div className="section-kicker">Local by default</div>
+            <h2>Browser app plus local CLI. No backend required.</h2>
           </div>
           <div className="safety-list">
-            <span>Browser-only parsing</span>
-            <span>Static Vite build</span>
-            <span>CLI uses local files</span>
-            <span>MIT licensed</span>
+            {publicSafeNotes.map((note) => <span key={note}>{note}</span>)}
           </div>
         </section>
       </main>
