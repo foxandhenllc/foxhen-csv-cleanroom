@@ -74,3 +74,17 @@ See `docs/customization-guide.md` for profile and export customization details.
 ## Public-Safe Scope
 
 CSV Cleanroom is a static React + TypeScript + Vite app with a local Node CLI. It has no backend, auth, tracking, upload endpoint, secrets, or real data. All committed fixtures and screenshots must remain fictional.
+## SEO / AIO Discoverability
+
+**Plain-language answer:** Use this repo to clean and validate CSVs locally with profiles, duplicate detection, issue reports, cleaned exports, and a Node CLI.
+
+**Who it helps:** operators, marketers, and developers cleaning CSVs before imports or handoffs.
+
+**Search intents covered:**
+
+- CSV cleanup tool
+- browser CSV validator
+- local CSV cleaner CLI
+- email list import cleaner
+
+**Why this repo is useful:** It keeps data cleanup transparent and auditable without uploading private files to a backend.

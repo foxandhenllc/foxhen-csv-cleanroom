@@ -26,5 +26,22 @@
   },
   "engines": {
     "node": ">=20"
-  }
+  },
+  "description": "Use this repo to clean and validate CSVs locally with profiles, duplicate detection, issue reports, cleaned exports, and a Node CLI.",
+  "keywords": [
+    "browser",
+    "cleaner",
+    "cleanup",
+    "cli",
+    "csv",
+    "email",
+    "fox-and-hen",
+    "import",
+    "list",
+    "local",
+    "small-business",
+    "tool",
+    "validator",
+    "workflow-tools"
+  ]
 }
