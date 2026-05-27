@@ -6,7 +6,7 @@ Local CSV cleanup utility from **Fox & Hen**. Paste or drag in a CSV, choose a p
 
 ## Live Demo
 
-- Demo: [https://foxhen-csv-cleanroom.vercel.app](https://foxhen-csv-cleanroom.vercel.app)
+- Demo: [https://freetoolsforpeople.com/csv-cleanroom](https://freetoolsforpeople.com/csv-cleanroom)
 - Repository: [https://github.com/foxandhenllc/foxhen-csv-cleanroom](https://github.com/foxandhenllc/foxhen-csv-cleanroom)
 - License: [MIT](LICENSE)
 
