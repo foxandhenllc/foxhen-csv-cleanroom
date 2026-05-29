@@ -1,0 +1,35 @@
+name: Validation profile request
+description: Suggest a new CSV validation or cleanup profile.
+title: "Add profile: "
+labels: ["enhancement", "good first issue"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for public-safe profile ideas. Do not paste private CSV rows or real contact data.
+  - type: input
+    id: workflow
+    attributes:
+      label: Workflow
+      description: What import, migration, or handoff does this profile support?
+      placeholder: "Example: Shopify customer import"
+    validations:
+      required: true
+  - type: textarea
+    id: columns
+    attributes:
+      label: Expected columns
+      description: List public-safe column names and validation rules.
+      placeholder: |
+        email: required, email
+        first_name: required text
+        phone: optional US phone
+    validations:
+      required: true
+  - type: textarea
+    id: fixture
+    attributes:
+      label: Synthetic fixture idea
+      description: Describe fake rows or edge cases. Do not paste real records.
+    validations:
+      required: true

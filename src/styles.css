@@ -531,6 +531,59 @@ button.secondary-action {
   letter-spacing: -.04em;
 }
 
+.project-panel {
+  display: grid;
+  grid-template-columns: minmax(300px, .58fr) minmax(0, 1fr);
+  gap: 1rem;
+  margin: .75rem 0 1.5rem;
+  align-items: stretch;
+}
+
+.project-panel-copy {
+  align-self: center;
+}
+
+.project-health-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .8rem;
+}
+
+.project-health-card {
+  min-height: 10rem;
+  border: 1px solid rgba(7, 22, 17, .1);
+  border-radius: 1.3rem;
+  background: linear-gradient(145deg, rgba(233, 248, 242, .92), rgba(255, 250, 244, .86));
+  padding: 1rem;
+}
+
+.project-health-card span,
+.project-health-card strong {
+  display: block;
+}
+
+.project-health-card span {
+  color: #2b6653;
+  font-size: .72rem;
+  font-weight: 950;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.project-health-card strong {
+  margin: .55rem 0 .45rem;
+  font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+  line-height: 1;
+  letter-spacing: -.04em;
+}
+
+.project-health-card p {
+  margin: 0;
+  color: #52625a;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
 .table-wrap {
   max-width: 100%;
   overflow: auto;
@@ -705,6 +758,7 @@ td small {
   .hero,
   .workflow-grid,
   .results-grid,
+  .project-panel,
   .export-panel,
   .public-safe-panel {
     grid-template-columns: 1fr;
@@ -760,6 +814,7 @@ td small {
   .summary-grid,
   .use-case-strip,
   .profile-grid,
+  .project-health-grid,
   .custom-profile-topline {
     grid-template-columns: 1fr;
   }

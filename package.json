@@ -1,6 +1,7 @@
 {
   "name": "foxhen-csv-cleanroom",
   "version": "0.2.0",
+  "license": "MIT",
   "type": "module",
   "bin": {
     "csv-cleanroom": "./bin/csv-cleanroom.mjs"

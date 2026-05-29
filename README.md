@@ -2,6 +2,8 @@
 
 Local CSV cleanup utility from **Fox & Hen**. Paste or drag in a CSV, choose a profile, review issues, and export cleaned rows plus an issue report.
 
+[![Build](https://github.com/foxandhenllc/foxhen-csv-cleanroom/actions/workflows/build.yml/badge.svg)](https://github.com/foxandhenllc/foxhen-csv-cleanroom/actions/workflows/build.yml)
+
 ![CSV Cleanroom demo screenshot](docs/demo-screenshot.png)
 
 ## Live Demo
@@ -19,6 +21,10 @@ Local CSV cleanup utility from **Fox & Hen**. Paste or drag in a CSV, choose a p
 - Shows a sortable-style issue table and cleaned-data preview in the browser.
 - Exports cleaned CSV, JSON issue report, and Markdown handoff.
 - Includes a local Node CLI for repeatable fixture/client handoffs.
+
+## Why Local-First
+
+Many CSV cleanup tasks involve lists that should not be uploaded to a random service: lead exports, contact imports, content inventories, and handoff spreadsheets. CSV Cleanroom keeps parsing and exports local, uses synthetic fixtures in the repo, and documents public-safe adaptation rules so teams can fork the utility without exposing private records.
 
 ## Screenshots
 
@@ -59,7 +65,7 @@ npm run build
 
 `npm run smoke` runs the CLI against `fixtures/dirty-email-list.csv` and verifies cleaned CSV plus JSON report output.
 
-A copy-ready CI workflow lives at `docs/github-actions/build.yml.example`; move it to `.github/workflows/build.yml` after GitHub auth has the `workflow` scope.
+CI runs typecheck, smoke test, and production build through `.github/workflows/build.yml`.
 
 ## Client Customization
 
@@ -71,9 +77,17 @@ A copy-ready CI workflow lives at `docs/github-actions/build.yml.example`; move 
 
 See `docs/customization-guide.md` for profile and export customization details.
 
+## Contributing
+
+Useful first contributions include new validation profiles, edge-case synthetic fixtures, CLI examples, accessibility improvements, and tests around profile behavior.
+
+- Start with [CONTRIBUTING.md](CONTRIBUTING.md).
+- See the focused [ROADMAP.md](ROADMAP.md).
+- Use GitHub issue templates for public-safe profile requests and quality improvements.
+
 ## Public-Safe Scope
 
-CSV Cleanroom is a static React + TypeScript + Vite app with a local Node CLI. It has no backend, auth, tracking, upload endpoint, secrets, or real data. All committed fixtures and screenshots must remain fictional.
+CSV Cleanroom is a static React + TypeScript + Vite app with a local Node CLI. It has no backend, auth, tracking, upload endpoint, credentials, or real data. All committed fixtures and screenshots must remain fictional.
 ## SEO / AIO Discoverability
 
 **Plain-language answer:** Use this repo to clean and validate CSVs locally with profiles, duplicate detection, issue reports, cleaned exports, and a Node CLI.

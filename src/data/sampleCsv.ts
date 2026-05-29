@@ -12,8 +12,31 @@ export const useCases = [
   "Client spreadsheet QA",
 ];
 
+export const projectHealth = [
+  {
+    label: "Two ways to run",
+    value: "Browser + CLI",
+    detail: "Use the static app for review or the Node CLI for repeatable handoffs.",
+  },
+  {
+    label: "Validation scope",
+    value: "Profiles",
+    detail: "Email lists, contact imports, content inventories, or local custom rules.",
+  },
+  {
+    label: "Review outputs",
+    value: "CSV, JSON, Markdown",
+    detail: "Export cleaned rows, issue reports, and copy-ready handoff notes.",
+  },
+  {
+    label: "Contributor path",
+    value: "MIT + CI",
+    detail: "Roadmap, contribution guide, issue templates, and build checks are included.",
+  },
+];
+
 export const publicSafeNotes = [
   "Browser-only parsing",
   "Local Node CLI included",
-  "No backend, auth, tracking, secrets, or uploads",
+  "No backend, auth, tracking, credentials, or uploads",
 ];

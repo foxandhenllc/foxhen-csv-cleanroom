@@ -7,7 +7,7 @@ import { PreviewTable } from "./components/PreviewTable";
 import { ProfilePicker } from "./components/ProfilePicker";
 import { SummaryCards } from "./components/SummaryCards";
 import { profiles } from "./data/profiles";
-import { publicSafeNotes, sampleCsv, useCases } from "./data/sampleCsv";
+import { projectHealth, publicSafeNotes, sampleCsv, useCases } from "./data/sampleCsv";
 import { loadCustomProfile, saveCustomProfile } from "./lib/customProfile";
 import { cleanCsvText } from "./lib/csvCleanroom.js";
 import type { CleanroomProfile } from "./lib/csvCleanroom.js";
@@ -55,6 +55,7 @@ function App() {
           <a href="#intake">Intake</a>
           <a href="#issues">Issues</a>
           <a href="#preview">Preview</a>
+          <a href="#project">Project</a>
           <a className="nav-button" href="https://github.com/foxandhenllc/foxhen-csv-cleanroom">Repository</a>
         </nav>
       </header>
@@ -65,7 +66,7 @@ function App() {
             <p className="service-line">Local CSV cleanup</p>
             <h1>Clean and validate CSVs in your browser.</h1>
             <p className="lede">
-              Paste or drop a CSV, pick a validation profile, review issues, and export cleaned rows. Nothing uploads.
+              Paste or drop a CSV, pick a validation profile, review issues, and export cleaned rows. Nothing uploads, and the same rules run from the local CLI.
             </p>
             <div className="hero-actions">
               <a className="primary-action" href="#intake">Clean a CSV</a>
@@ -109,6 +110,29 @@ function App() {
               <strong>{useCase}</strong>
             </article>
           ))}
+        </section>
+
+        <section id="project" className="panel project-panel">
+          <div className="project-panel-copy">
+            <div className="section-kicker">Open-source utility</div>
+            <h2>Forkable cleanup rules for messy CSV handoffs.</h2>
+            <p>
+              CSV Cleanroom keeps validation logic shared between the browser app and Node CLI, with synthetic fixtures, contribution docs, issue templates, and CI checks for maintainers.
+            </p>
+            <div className="hero-actions">
+              <a className="primary-action" href="https://github.com/foxandhenllc/foxhen-csv-cleanroom/blob/main/CONTRIBUTING.md">Contribute</a>
+              <a className="secondary-action" href="https://github.com/foxandhenllc/foxhen-csv-cleanroom/blob/main/ROADMAP.md">Roadmap</a>
+            </div>
+          </div>
+          <div className="project-health-grid">
+            {projectHealth.map((item) => (
+              <article key={item.label} className="project-health-card">
+                <span>{item.label}</span>
+                <strong>{item.value}</strong>
+                <p>{item.detail}</p>
+              </article>
+            ))}
+          </div>
         </section>
 
         <section className="results-grid">
