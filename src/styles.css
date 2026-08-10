@@ -168,6 +168,9 @@ h2 {
   padding: 0 1.1rem;
   cursor: pointer;
   font-weight: 950;
+  line-height: 1.1;
+  text-align: center;
+  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, border-color .18s ease;
 }
 
 button.primary-action,
@@ -185,6 +188,18 @@ button.secondary-action {
   color: #071611;
   border: 1px solid rgba(7, 22, 17, .14);
   background: rgba(255, 255, 255, .84);
+}
+
+@media (hover: hover) {
+  .primary-action:not(:disabled):hover,
+  .secondary-action:not(:disabled):hover { transform: translateY(-1px); box-shadow: 0 14px 32px rgba(7, 22, 17, .15); }
+}
+
+.primary-action:not(:disabled):active,
+.secondary-action:not(:disabled):active { transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .primary-action, .secondary-action { transition: none; }
 }
 
 .credibility-strip,
