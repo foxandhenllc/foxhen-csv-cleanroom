@@ -51,12 +51,12 @@ function App() {
             <small>CSV Cleanroom</small>
           </span>
         </a>
-        <nav>
+        <nav aria-label="Primary navigation">
           <a href="#intake">Intake</a>
           <a href="#issues">Issues</a>
           <a href="#preview">Preview</a>
           <a href="#project">Project</a>
-          <a className="nav-button" href="https://github.com/foxandhenllc/foxhen-csv-cleanroom">Repository</a>
+          <a className="nav-button" href="https://github.com/foxandhenllc/foxhen-csv-cleanroom" target="_blank" rel="noreferrer">Repository</a>
         </nav>
       </header>
 
@@ -120,8 +120,8 @@ function App() {
               CSV Cleanroom keeps validation logic shared between the browser app and Node CLI, with synthetic fixtures, contribution docs, issue templates, and CI checks for maintainers.
             </p>
             <div className="hero-actions">
-              <a className="primary-action" href="https://github.com/foxandhenllc/foxhen-csv-cleanroom/blob/main/CONTRIBUTING.md">Contribute</a>
-              <a className="secondary-action" href="https://github.com/foxandhenllc/foxhen-csv-cleanroom/blob/main/ROADMAP.md">Roadmap</a>
+              <a className="primary-action" href="https://github.com/foxandhenllc/foxhen-csv-cleanroom/blob/main/CONTRIBUTING.md" target="_blank" rel="noreferrer">Contribute</a>
+              <a className="secondary-action" href="https://github.com/foxandhenllc/foxhen-csv-cleanroom/blob/main/ROADMAP.md" target="_blank" rel="noreferrer">Roadmap</a>
             </div>
           </div>
           <div className="project-health-grid">

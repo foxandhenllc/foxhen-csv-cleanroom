@@ -782,6 +782,7 @@ td small {
 }
 
 @media (max-width: 720px) {
+  body { overflow-x: hidden; }
   .site-header {
     position: relative;
     top: auto;
@@ -811,6 +812,11 @@ td small {
     padding: 2.5rem 0 2rem;
   }
 
+  main, .hero > * { min-width: 0; }
+  .hero-actions { display: grid; grid-template-columns: 1fr; }
+  .hero-actions > * { width: 100%; justify-content: center; }
+  .hero-console { min-width: 0; overflow: hidden; }
+
   .summary-grid,
   .use-case-strip,
   .profile-grid,
@@ -820,7 +826,8 @@ td small {
   }
 
   h1 {
-    font-size: clamp(2.7rem, 16vw, 4.5rem);
+    font-size: clamp(2.55rem, 13vw, 4rem);
+    overflow-wrap: anywhere;
   }
 
   .custom-profile-row {
